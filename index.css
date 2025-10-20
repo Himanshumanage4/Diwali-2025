@@ -1,0 +1,275 @@
+/* ------------------ Reset ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ------------------ Body + Background ------------------ */
+body {
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+  background: linear-gradient(135deg, #70cac5, #e9815c, #e05a94, #0a0a1f);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ------------------ Particles container ------------------ */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ------------------ Balloons ------------------ */
+.balloon {
+  position: absolute;
+  bottom: -50px; /* overridden by JS */
+  z-index: 2;
+  animation: floatUp linear infinite;
+  will-change: transform;
+  filter: brightness(0.85);
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-70vh) rotate(10deg); }
+  100% { transform: translateY(-120vh) rotate(-10deg); }
+}
+
+/* ------------------ Sparkles ------------------ */
+.sparkle {
+  position: absolute;
+  background: radial-gradient(circle, #fff8c0 0%, #ffd700 80%);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: sparkleAnim 4s linear infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes sparkleAnim {
+  0% { transform: translateY(0) scale(0.8); opacity: 0.4; }
+  50% { transform: translateY(-10px) scale(1.2); opacity: 0.6; }
+  100% { transform: translateY(0) scale(0.8); opacity: 0.4; }
+}
+
+/* ------------------ Crackers ------------------ */
+.cracker {
+  position: absolute;
+  top: -100px;
+  z-index: 2;
+  opacity: 0.8;
+  animation: fallCracker linear infinite;
+}
+
+@keyframes fallCracker {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+  100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+}
+
+/* ------------------ Center Card ------------------ */
+.card {
+  position: relative;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 30px 30px 100px 30px; /* bottom space for Diyas */
+  text-align: center;
+  width: 92%;
+  max-width: 850px;
+  margin: 0 auto;
+  box-shadow: 0 0 60px rgba(5, 213, 228, 0.7);
+  animation: glow 2s ease-in-out infinite alternate;
+  overflow: hidden;
+}
+
+/* ------------------ Banner ------------------ */
+.banner {
+  width: 90%;
+  max-width: 400px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(10, 202, 245, 0.6);
+}
+
+/* ------------------ Heading ------------------ */
+.diwali-wish {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.8);
+  margin-bottom: 20px;
+}
+
+/* ------------------ Paragraph ------------------ */
+.diwali-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #fffacd;
+  line-height: 1.8;
+  margin-bottom: 50px;
+  text-align: justify;
+}
+
+/* ------------------ Celebrate Button ------------------ */
+button {
+  padding: 16px 40px;
+  font-size: 1.3rem;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #0dd2b4, #0bb6ea);
+  box-shadow: 0 0 30px #07f0b2;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5; /* above Diyas */
+  position: relative;
+  margin-bottom: 1px;
+}
+
+button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 50px #e82305;
+  background: linear-gradient(45deg, #0dd2b4, #ee41ab);
+}
+
+/* ------------------ Diyas ------------------ */
+.diya-left,
+.diya-right {
+  position: absolute;
+  bottom: 40px;
+  width: 140px;
+  animation: flicker 1.5s infinite;
+}
+
+.diya-left { left: 35px; }
+.diya-right { right: 35px; }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ------------------ Glow Animation ------------------ */
+@keyframes glow {
+  0% { box-shadow: 0 0 15px rgba(244, 12, 233, 0.5); }
+  100% { box-shadow: 0 0 60px rgb(230, 10, 142); }
+}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 1024px) {
+  .card { width: 95%; padding: 25px 20px 90px 20px; }
+  .banner { max-width: 350px; }
+  .diwali-wish { font-size: 2.5rem; }
+  .diwali-text { font-size: 1.1rem; margin-bottom: 40px; }
+  .diya-left, .diya-right { width: 120px; bottom: 25px; }
+  button { padding: 14px 35px; font-size: 1.2rem; }
+  .balloon { width: 180px; }
+  .particle { width: 60px; }
+}
+
+@media (max-width: 768px) {
+  .card { width: 96%; padding: 25px 15px 100px 15px; }
+  .banner { max-width: 300px; }
+  .diwali-wish { font-size: 2rem; }
+  .diwali-text { font-size: 1rem; margin-bottom: 35px; }
+  .diya-left, .diya-right { width: 100px; bottom: 15px; }
+  button { padding: 12px 30px; font-size: 1.1rem; }
+  .balloon { width: 150px; }
+  .particle { width: 50px; }
+}
+
+@media (max-width: 480px) {
+  .card { width: 98%; padding: 20px 10px 90px 10px; }
+  .banner { max-width: 250px; }
+  .diwali-wish { font-size: 1.6rem; }
+  .diwali-text { font-size: 0.9rem; margin-bottom: 25px; }
+  .diya-left, .diya-right { width: 80px; bottom: 10px; }
+  button { padding: 10px 25px; font-size: 0.95rem; }
+  .balloon { width: 120px; }
+  .particle { width: 40px; }
+}
+.footer {
+  font-family: "Edu AU VIC WA NT Hand", cursive;
+  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px 40px;
+  background: rgba(255, 255, 255, 0.2); 
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  backdrop-filter: blur(12px); 
+  color: #fff;
+  text-align: center;
+  font-size: 24px; 
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  border-radius: 15px;
+}
+
+.footer:hover {
+  cursor: pointer;
+  text-shadow: 0 0 30px rgba(195, 18, 65, 0.908);
+  color: black;
+  font-size: 27px;
+  transition: all 0.4s;
+  border-radius: 35px;
+  box-shadow: 0 10px 20px rgba(10, 46, 207, 0.3); 
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 18px;
+    padding: 15px 30px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .footer a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    font-size: 14px;
+    padding: 10px 20px;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .footer a {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 14px;
+    height: auto;
+    top: calc(100vh - 20px);
+  }
+}
